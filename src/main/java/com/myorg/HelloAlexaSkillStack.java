@@ -29,7 +29,7 @@ public class HelloAlexaSkillStack extends Stack {
         FunctionProps properties = FunctionProps.builder()
                 .runtime(Runtime.JAVA_8)
                 .code(sourceCode)
-                .handler("com.alexa.skill.HelloWorldStreamHandler::getSkill").build();
+                .handler("com.alexa.skill.HelloWorldStreamHandler").build();
 
         // Define a new Lambda resource
         final Function alexaskill = new Function(this, "SkillHandler", properties);

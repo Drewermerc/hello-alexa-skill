@@ -3,9 +3,7 @@ package com.myorg;
 import software.amazon.awscdk.core.Construct;
 import software.amazon.awscdk.core.Stack;
 import software.amazon.awscdk.core.StackProps;
-import software.amazon.awscdk.services.lambda.Code;
-import software.amazon.awscdk.services.lambda.Function;
-import software.amazon.awscdk.services.lambda.FunctionProps;
+import software.amazon.awscdk.services.lambda.*;
 import software.amazon.awscdk.services.lambda.Runtime;
 import software.amazon.awscdk.services.s3.Bucket;
 
@@ -29,7 +27,9 @@ public class HelloAlexaSkillStack extends Stack {
         FunctionProps properties = FunctionProps.builder()
                 .runtime(Runtime.JAVA_8)
                 .code(sourceCode)
-                .handler("com.alexa.skill.HelloWorldStreamHandler").build();
+                .handler("com.alexa.skill.HelloWorldStreamHandler")
+                .memorySize(512)
+                .build();
 
         // Define a new Lambda resource
         final Function alexaskill = new Function(this, "SkillHandler", properties);
